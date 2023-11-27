@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fe-maintenance
+  namespace: argocd
+  labels:
+    app: fe-maintenance
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fe-maintenance
+  template:
+    metadata:
+      labels:
+        app: fe-maintenance
+    spec:
+      containers:
+      - name: front-maintenance
+        image: gunawand/fe-maintenance:latest 
+        ports:
+        - containerPort: 3000
+        imagePullPolicy: Always
+#Create readness & liveness
+        readinessProbe:
+          httpGet:
+            path: /healthcheck
+            port: 3000
+            scheme: HTTP
+          failureThreshold: 10
+          initialDelaySeconds: 5
+          periodSeconds: 3
+          timeoutSeconds: 1
+        livenessProbe:
+          httpGet:
+            path: /healthcheck
+            port: 3000
+          failureThreshold: 3
+          initialDelaySeconds: 20
+          periodSeconds: 15
+          timeoutSeconds: 3
+        resources:
+          requests:
+            cpu: 128m
+            memory: 128Mi
+          limits:
+            cpu: 256m
+            memory: 256Mi
+      # imagePullSecrets:
+      # - name: ghcr-secret
+      

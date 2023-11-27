@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fe-maintenance
+  namespace: argocd
+spec:
+  selector:
+    app: fe-maintenance
+  ports:
+  - protocol: TCP
+    port: 3000
+    targetPort: 3000
+    
