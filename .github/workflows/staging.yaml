@@ -38,4 +38,4 @@ jobs:
       # Update Helm Chart values.yaml with the new image tag
       - name: Update Helm Chart
         run: |
-          sed -i "s~__IMAGE__~gunawand/fe-maintenance:${{ github.sha }}~" ./values.yaml
+          sed -i "s~__IMAGE__~gunawand/fe-maintenance:${{ github.sha }}~" ./chart/values.yaml
