@@ -7,7 +7,7 @@ spec:
     name: 'in-cluster'
     namespace: 'argocd'
   source:
-    path: 'chart'
+    path: 'manifests'
     repoURL: 'https://github.com/gunawan-d/argocd-trial'
     targetRevision: HEAD
     helm:
