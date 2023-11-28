@@ -25,15 +25,17 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            gunawand/fe-maintenance:${{ github.sha }}
-            gunawand/fe-maintenance:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/fe-maintenance:${{ github.sha }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/fe-maintenance:latest
       
       - name: Add tag to image to values
         run: |
+          new_image_tag=${{ secrets.DOCKERHUB_USERNAME }}/fe-maintenance:${{ github.sha }}
           cd chart
           cat values.yaml
-          sed -i "s~__IMAGE__~gunawand/fe-maintenance:${{ github.sha }}~" values.yaml
+          sed -i "s~__IMAGE__${new_image_tag}~" values.yaml
           cat values.yaml
+
       # sed -i "s~__IMAGE__~${{ secrets.DOCKERHUB_USERNAME }}/fe-maintenance:${{ github.sha }}~" values.yaml  
   # update:
   #   name: Update Helm Manifests
