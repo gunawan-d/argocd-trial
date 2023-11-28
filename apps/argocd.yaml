@@ -4,7 +4,7 @@ metadata:
   name: 'fe-maintenance'
 spec:
   destination:
-    name: 'in-cluster'
+    name: 'fe-maintenance'
     namespace: 'argocd'
   source:
     path: 'chart'
