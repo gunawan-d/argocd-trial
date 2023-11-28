@@ -5,14 +5,14 @@ const Home: NextPage = () => {
   return (
     <div className="h-full">
       <Head>
-        <title>ArgoCD V2</title>
+        <title>ArgoCD</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className="h-full flex flex-col justify-center bg-[#F5FAFE] md:bg-white">
         <div className="mx-auto text-center md:rounded-full md:w-[600px] md:h-[600px] md:bg-[#F5FAFE] py-24">
           <p className="text-[32px] text-primary font-bold mb-[24px] md:text-[64px] md:leading-[72px]">
-            ArgoCD is under maintenance
+            ArgoCD V2 is under maintenance 
           </p>
           <p className="text-[20px] leading-[24px] font-normal text-darkBlue md:text-[32px]">
             We’re preparing to serve you better.
