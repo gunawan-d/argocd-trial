@@ -7,8 +7,8 @@ spec:
     name: 'in-cluster'
     namespace: 'argocd'
   source:
-    path: 'manifests'
-    repoURL: 'https://github.com/gunawan-d/argocd-trial'
+    path: 'chart'
+    repoURL: 'https://github.com/gunawan-d/argocd-trial.git'
     targetRevision: HEAD
     helm:
       valueFiles:

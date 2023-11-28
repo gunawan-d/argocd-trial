@@ -28,7 +28,7 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/fe-maintenance:${{ github.sha }}
             ${{ secrets.DOCKERHUB_USERNAME }}/fe-maintenance:latest
      
-      - name: Set tage for images
+      - name: Set taga for images
         run : |
           chart_dir="manifests"
           new_image_tag=${{ github.sha }}
