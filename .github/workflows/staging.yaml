@@ -24,4 +24,6 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/fe-maintenance:${{ github.sha }}
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/fe-maintenance:${{ github.sha }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/fe-maintenance:latest
