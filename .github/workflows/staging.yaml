@@ -33,7 +33,7 @@ jobs:
           new_image_tag=${{ secrets.DOCKERHUB_USERNAME }}/fe-maintenance:${{ github.sha }}
           cd chart
           cat values.yaml
-          sed -i "s~__IMAGE__~${new_image_tag}~" values.yaml
+          sed -i "s~__IMAGE__~${new_image_tag}~g" values.yaml
           cat values.yaml
 
       # sed -i "s~__IMAGE__~${{ secrets.DOCKERHUB_USERNAME }}/fe-maintenance:${{ github.sha }}~" values.yaml  
