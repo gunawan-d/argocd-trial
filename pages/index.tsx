@@ -5,7 +5,7 @@ const Home: NextPage = () => {
   return (
     <div className="h-full">
       <Head>
-        <title>ArgoCD</title>
+        <title>ArgoCD V3</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
