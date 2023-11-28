@@ -32,10 +32,10 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}:${{ github.sha }}
-            ghcr.io/${{ github.repository }}:latest 
+            gunawand/fe-maintenance:${{ github.sha }}
+            gunawand/fe-maintenance:latest
 
       # Update Helm Chart values.yaml with the new image tag
       - name: Update Helm Chart
         run: |
-          sed -i "s~__IMAGE__~ghcr.io/${{ github.repository }}:${{ github.sha }}~" ./values.yaml
+          sed -i "s~__IMAGE__~gunawand/fe-maintenance:${{ github.sha }}~" ./values.yaml
