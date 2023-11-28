@@ -39,6 +39,14 @@ jobs:
         run: |
           chart_dir="chart"
           new_image_tag=${{ github.sha }}
-          sed -i "s/^  tag: .*/  tag: $new_image_tag/" "$chart_dir/values.yaml"
+          sed -i "s~tag: .*$~tag: $new_image_tag~" "$chart_dir/values.yaml"
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name 'Gunawan-d'
+          git config --global user.email 'gunawandwi255@gmail.com'
+          git add "$chart_dir/values.yaml"
+          git commit -m "Update image tag in Helm Chart to $new_image_tag"
+          git push
 
   
