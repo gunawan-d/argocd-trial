@@ -30,7 +30,7 @@ jobs:
       
       - name: Add tag to image to values
         run: |
-          sed -i "s~__IMAGE__~ghcr.io/${{ github.repository }}:${{ github.sha }}~" ./chart/values.yaml  
+          sed -i "s~__IMAGE__~${{ secrets.DOCKERHUB_USERNAME }}/fe-maintenance:${{ github.sha }}~" ./chart/values.yaml  
   # update:
   #   name: Update Helm Manifests
   #   runs-on: ubuntu-latest
