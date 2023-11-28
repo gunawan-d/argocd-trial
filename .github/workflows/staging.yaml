@@ -31,7 +31,10 @@ jobs:
       - name: Add tag to image to values
         run: |
           cd chart
-          sed -i "s~__IMAGE__~${{ secrets.DOCKERHUB_USERNAME }}/fe-maintenance:${{ github.sha }}~" values.yaml  
+          cat values.yaml
+          sed -i "s~__IMAGE__~${{ secrets.DOCKERHUB_USERNAME }}/fe-maintenance:${{ github.sha }}~" values.yaml
+          cat values.yaml
+      # sed -i "s~__IMAGE__~${{ secrets.DOCKERHUB_USERNAME }}/fe-maintenance:${{ github.sha }}~" values.yaml  
   # update:
   #   name: Update Helm Manifests
   #   runs-on: ubuntu-latest
