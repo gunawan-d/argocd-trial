@@ -35,7 +35,24 @@ jobs:
             gunawand/fe-maintenance:${{ github.sha }}
             gunawand/fe-maintenance:latest
 
-      # Update Helm Chart values.yaml with the new image tag
-      - name: Update Helm Chart
-        run: |
-          sed -i "s~__IMAGE__~gunawand/fe-maintenance:${{ github.sha }}~" ./chart/values.yaml
+  update:
+    name: Update Helm Manifests
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Update Image Tag Values
+      run: |
+        chart_dir="chart"
+        new_image_tag=${{ github.sha }}
+        sed -i "s/^  tag: .*/  tag: $new_image_tag/" "$chart_dir/values.yaml"
+    
+    - name: Commit the changes made
+      run: | 
+        git config --global user.name 'gunawan-d'
+        git config --global user.email 'gunawandwi255@gmail.com'
+        git commit -am "updating image tag"
+        git push
