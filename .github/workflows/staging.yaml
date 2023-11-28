@@ -27,3 +27,11 @@ jobs:
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/fe-maintenance:${{ github.sha }}
             ${{ secrets.DOCKERHUB_USERNAME }}/fe-maintenance:latest
+     
+      - name: Set tage for images
+        run : |
+          chart_dir="manifests"
+          new_image_tag=${{ github.sha }}
+
+          # Update the values.yaml file with the new image tag
+          sed -i "s/^  tag: .*/  tag: $new_image_tag/" "$chart_dir/values.yaml"

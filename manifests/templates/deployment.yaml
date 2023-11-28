@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: front-maintenance
-        image: gunawand/fe-maintenance:latest
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}" 
         ports:
         - containerPort: 3000
         imagePullPolicy: Always

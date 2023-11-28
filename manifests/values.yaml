@@ -1,0 +1,3 @@
+image:
+  repository: ${{ secrets.DOCKERHUB_USERNAME }}/fe-maintenance
+  tag: 
