@@ -32,21 +32,10 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/fe-maintenance:${{ github.sha }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/fe-maintenance:latest
+            ghcr.io/${{ github.repository }}:${{ github.sha }}
+            ghcr.io/${{ github.repository }}:latest 
 
       # Update Helm Chart values.yaml with the new image tag
       - name: Update Helm Chart
         run: |
-          chart_dir="chart"
-          new_image_tag=${{ secrets.DOCKERHUB_USERNAME }}/fe-maintenance:${{ github.sha }}
-          
-          cd $chart_dir
-          sed -i "s|__IMAGE__|$new_image_tag|g" values.yaml
-          cat values.yaml
-          
-          git config --global user.name 'gunawan-d'
-          git config --global user.email 'gunawandwi255@gmail.com'
-          git add values.yaml
-          git commit -m "Update image tag in Helm Chart"
-          git push
+          sed -i "s~__IMAGE__~ghcr.io/${{ github.repository }}:${{ github.sha }}~" ./values.yaml
