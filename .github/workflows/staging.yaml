@@ -25,14 +25,14 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/fe-maintenance:${{ github.sha }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/fe-maintenance:latest
+            gunawand/fe-maintenance:${{ github.sha }}
+            gunawand/fe-maintenance:latest
       
       - name: Add tag to image to values
         run: |
           cd chart
           cat values.yaml
-          sed -i "s~__IMAGE__~${{ secrets.DOCKERHUB_USERNAME }}/fe-maintenance:${{ github.sha }}~" values.yaml
+          sed -i "s~__IMAGE__~gunawand/fe-maintenance:${{ github.sha }}~" values.yaml
           cat values.yaml
       # sed -i "s~__IMAGE__~${{ secrets.DOCKERHUB_USERNAME }}/fe-maintenance:${{ github.sha }}~" values.yaml  
   # update:
