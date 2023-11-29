@@ -47,6 +47,8 @@ jobs:
       
       - name: Commit and Push Changes
         run: |
+          git config --global user.name 'gunawan-d'
+          git config --global user.email 'gunawandwi255@gmail.com'
           git add .
           git commit -m "Update image tag in Helm Chart"
           git push 
