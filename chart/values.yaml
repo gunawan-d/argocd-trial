@@ -1,3 +1,2 @@
 image:
-  repository: gunawand/fe-maintenance
-  tag: latest
+  repository: gunawand/fe-maintenance:__sha__
