@@ -39,6 +39,8 @@ jobs:
         run: |
           chart_dir="chart"
           new_image_tag=${{ github.sha }}
+          echo "chart_dir: $chart_dir"
+          echo "new_image_tag: $new_image_tag"
           cd "$chart_dir
           sed -i "s~tag: .*$~tag: $new_image_tag~" "$chart_dir/values.yaml"
           cat values.yaml
