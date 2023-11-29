@@ -47,12 +47,9 @@ jobs:
       
       - name: Commit and Push Changes
         run: |
-          git config --global user.name 'gunawan-d'
-          git config --global user.email 'gunawandwi255@gmail.com'
-          git remote add origin https://gunawan-d:${{ secrets.GH_PAT }}@github.com/gunawan-d/${{ github.repository }}.git
           git add .
           git commit -m "Update image tag in Helm Chart"
-          git push origin master
+          git push 
 
 
   
