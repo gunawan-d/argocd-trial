@@ -1,1 +1,3 @@
-image: gunawand/fe-maintenance:__sha__
+image: 
+  repository: ghcr.io/edufund-tech/front-maintenance
+  tag: 1cc80cf5a59909ee77e6bef9586cc9226bae2c56
