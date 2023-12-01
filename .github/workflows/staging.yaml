@@ -56,7 +56,9 @@ jobs:
           new_image_tag=${{ env.BRANCH }}-${{ github.sha }}
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@edufund.co.id"
+          git status
           git add .
+          git status
           git commit -m "Update image tag in Helm Chart - $new_image_tag"
           git push
 
