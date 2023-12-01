@@ -44,7 +44,7 @@ jobs:
       - name: Update Image Tag Values
         run: |
           chart_dir="chart"
-          new_image_tag=${{ github.sha }}
+          new_image_tag=${{ env.BRANCH }}-${{ github.sha }}
           echo "chart_dir: $chart_dir"
           echo "new_image_tag: $new_image_tag"
           cd "$chart_dir"
