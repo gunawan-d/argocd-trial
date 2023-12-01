@@ -32,7 +32,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            gunawand/fe-maintenance:${{ github.sha }}
+            gunawand/fe-maintenance:${{ steps.vars.outputs.tag }}-${{ github.sha }}
             gunawand/fe-maintenance:latest
       
       - name: Update Image Tag Values
@@ -47,11 +47,12 @@ jobs:
       
       - name: Commit and Push Changes
         run: |
-          git config --global user.name 'gunawan-d'
-          git config --global user.email 'gunawandwi255@gmail.com'
+          new_image_tag=${{ github.sha }}
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@edufund.co.id"
           git add .
-          git commit -m "Update image tag in Helm Chart"
-          git push 
+          git commit -m "Update image tag in Helm Chart - $new_image_tag"
+          git push
 
 
   
