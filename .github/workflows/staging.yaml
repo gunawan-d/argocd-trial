@@ -32,7 +32,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            gunawand/fe-maintenance:${{ steps.vars.outputs.tag }}-${{ github.sha }}
+            gunawand/fe-maintenance:${{ github.ref_slug }}-${{ github.sha }}
             gunawand/fe-maintenance:latest
       
       - name: Update Image Tag Values
