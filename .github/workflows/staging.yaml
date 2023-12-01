@@ -40,13 +40,13 @@ jobs:
             BRANCH=${{ env.BRANCH }}
             SHORT_SHA=${{ env.SHORT_SHA }}
           tags: |
-            gunawand/fe-maintenance:${{ env.BRANCH }}-${{ github.sha }}
+            gunawand/fe-maintenance:${{ env.BRANCH }}-${{ env.SHORT_SHA }}
             gunawand/fe-maintenance:latest
       
       - name: Update Image Tag Values
         run: |
           chart_dir="chart"
-          new_image_tag=${{ env.BRANCH }}-${{ github.sha }}
+          new_image_tag=${{ env.BRANCH }}-${{ env.SHORT_SHA }}
           echo "chart_dir: $chart_dir"
           echo "new_image_tag: $new_image_tag"
           cd "$chart_dir"
@@ -55,7 +55,7 @@ jobs:
       
       - name: Commit and Push Changes
         run: |
-          new_image_tag=${{ env.BRANCH }}-${{ github.sha }}
+          new_image_tag=${{ env.BRANCH }}-${{ env.SHORT_SHA }}
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@edufund.co.id"
           git add .
