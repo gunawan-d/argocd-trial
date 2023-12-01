@@ -24,6 +24,10 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      - name: branch name
+        run: |
+          run: echo "BRANCH=${GITHUB_REF##*/}" >> $GITHUB_ENV
+
       # Build and push Docker image
       - name: Build and push
         uses: docker/build-push-action@v5
@@ -31,8 +35,10 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
+          build-args: |
+            BRANCH=${{ env.BRANCH }}
           tags: |
-            gunawand/fe-maintenance:${{ github.ref_slug }}-${{ github.sha }}
+            gunawand/fe-maintenance:${{ env.BRANCH }}-${{ github.sha }}
             gunawand/fe-maintenance:latest
       
       - name: Update Image Tag Values
