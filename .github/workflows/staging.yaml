@@ -48,7 +48,7 @@ jobs:
           echo "chart_dir: $chart_dir"
           echo "new_image_tag: $new_image_tag"
           cd "$chart_dir"
-          sed -i "s~__sha__~$new_image_tag~" "./values.yaml"
+          sed -i "s/^  tag: .*/  tag: $new_image_tag/" "./values.yaml"
           cat values.yaml
       
       - name: Commit and Push Changes
@@ -56,9 +56,7 @@ jobs:
           new_image_tag=${{ env.BRANCH }}-${{ github.sha }}
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@edufund.co.id"
-          git status
           git add .
-          git status
           git commit -m "Update image tag in Helm Chart - $new_image_tag"
           git push
 
